@@ -72,9 +72,9 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TxE-kX-8P7">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TxE-kX-8P7">
                                                 <rect key="frame" x="0.0" y="14.5" width="374" height="321"/>
-                                                <color key="backgroundColor" name="navbarShadow"/>
+                                                <color key="backgroundColor" name="calendarBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="321" id="d0p-yg-xSa"/>
                                                 </constraints>
@@ -85,7 +85,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="haI-ZA-zYw">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2pq-I9-6aH">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -98,7 +98,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="navbarShadow"/>
+                                <color key="backgroundColor" name="calendarBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="9Z8-WZ-ePT" secondAttribute="bottom" id="Dx7-8k-mhu"/>
                                     <constraint firstAttribute="trailing" secondItem="9Z8-WZ-ePT" secondAttribute="trailing" constant="20" symbolic="YES" id="PXU-4O-962"/>
@@ -176,7 +176,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="navbarShadow">
+        <namedColor name="calendarBackgroundColor">
             <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
