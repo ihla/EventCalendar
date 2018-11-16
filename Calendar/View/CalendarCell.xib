@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarCell" customModule="Calendar" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCell" id="gTV-IL-0wX" customClass="CalendarCell" customModule="Calendar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdA-YC-AyN">
+                        <rect key="frame" x="0.0" y="0.0" width="48" height="1"/>
+                        <color key="backgroundColor" name="eventDotColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="XKL-qN-v2C"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TK-2K-cRu" userLabel="ContentView">
+                        <rect key="frame" x="9" y="4" width="30" height="40"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1M-0T-WGD" customClass="RoundedView" customModule="Calendar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IcW-Yd-aFL"/>
+                                    <constraint firstAttribute="width" constant="30" id="d6L-3Y-9hm"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gw-MH-vqg">
+                                <rect key="frame" x="0.0" y="4.5" width="30" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Jx-dF-3nY" customClass="RoundedView" customModule="Calendar" customModuleProvider="target">
+                                <rect key="frame" x="12" y="34" width="6" height="6"/>
+                                <color key="backgroundColor" name="eventDotColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="6" id="Eap-if-Wn6"/>
+                                    <constraint firstAttribute="height" constant="6" id="HFp-md-KDJ"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="qti-kA-g9N"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="2Gw-MH-vqg" firstAttribute="centerY" secondItem="i1M-0T-WGD" secondAttribute="centerY" id="3Xs-je-OzS"/>
+                            <constraint firstAttribute="bottom" secondItem="0Jx-dF-3nY" secondAttribute="bottom" id="62C-Iz-DPh"/>
+                            <constraint firstItem="i1M-0T-WGD" firstAttribute="leading" secondItem="1TK-2K-cRu" secondAttribute="leading" id="F6P-m4-iUN"/>
+                            <constraint firstItem="i1M-0T-WGD" firstAttribute="top" secondItem="1TK-2K-cRu" secondAttribute="top" id="Ldu-tc-CDj"/>
+                            <constraint firstItem="0Jx-dF-3nY" firstAttribute="top" secondItem="i1M-0T-WGD" secondAttribute="bottom" constant="4" id="NWP-HS-cnX"/>
+                            <constraint firstItem="0Jx-dF-3nY" firstAttribute="centerX" secondItem="1TK-2K-cRu" secondAttribute="centerX" id="VwU-Bn-o5Y"/>
+                            <constraint firstItem="2Gw-MH-vqg" firstAttribute="centerX" secondItem="i1M-0T-WGD" secondAttribute="centerX" id="hsV-nu-ivU"/>
+                            <constraint firstAttribute="trailing" secondItem="i1M-0T-WGD" secondAttribute="trailing" id="q0C-uy-FSX"/>
+                            <constraint firstItem="2Gw-MH-vqg" firstAttribute="width" secondItem="i1M-0T-WGD" secondAttribute="width" id="uuB-tS-LQZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="1TK-2K-cRu" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Pc9-k5-hIa"/>
+                <constraint firstItem="XdA-YC-AyN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bd5-vC-bK1"/>
+                <constraint firstItem="XdA-YC-AyN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fv8-5G-yO9"/>
+                <constraint firstAttribute="trailing" secondItem="XdA-YC-AyN" secondAttribute="trailing" id="i29-XK-9k0"/>
+                <constraint firstItem="1TK-2K-cRu" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="i9b-xJ-7Ca"/>
+            </constraints>
+            <connections>
+                <outlet property="dayLabel" destination="2Gw-MH-vqg" id="5DC-36-aWD"/>
+                <outlet property="dotView" destination="0Jx-dF-3nY" id="1Ia-lZ-f9E"/>
+                <outlet property="selectedView" destination="i1M-0T-WGD" id="ivO-8i-5t7"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="eventDotColor">
+            <color red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

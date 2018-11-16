@@ -16,6 +16,9 @@
 		20ACEF0C2196D8A8008A5FCB /* CalendarMonthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20ACEF0B2196D8A8008A5FCB /* CalendarMonthViewController.storyboard */; };
 		20ACEF0E2196E019008A5FCB /* UINavigationController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACEF0D2196E019008A5FCB /* UINavigationController+extensions.swift */; };
 		20ACEF1021974D6D008A5FCB /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACEF0F21974D6D008A5FCB /* RoundedView.swift */; };
+		20ACEF1721982121008A5FCB /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACEF1521982121008A5FCB /* CalendarCell.swift */; };
+		20ACEF1821982121008A5FCB /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20ACEF1621982121008A5FCB /* CalendarCell.xib */; };
+		20ACEF1A21983FD1008A5FCB /* DateFormatter+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACEF1921983FD1008A5FCB /* DateFormatter+extensions.swift */; };
 		5C0560EEAB592D7FDEF72B30 /* Pods_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DDFD204008746B2CC18474 /* Pods_Calendar.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		20ACEF0B2196D8A8008A5FCB /* CalendarMonthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarMonthViewController.storyboard; sourceTree = "<group>"; };
 		20ACEF0D2196E019008A5FCB /* UINavigationController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extensions.swift"; sourceTree = "<group>"; };
 		20ACEF0F21974D6D008A5FCB /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		20ACEF1521982121008A5FCB /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		20ACEF1621982121008A5FCB /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		20ACEF1921983FD1008A5FCB /* DateFormatter+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extensions.swift"; sourceTree = "<group>"; };
 		5AFCF62FF511694D7D6505BE /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		972245846826EE54529D0D3F /* Pods-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calendar/Pods-Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		A3DDFD204008746B2CC18474 /* Pods_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +82,7 @@
 				2070481A2196D3070033096A /* Assets.xcassets */,
 				2070481C2196D3070033096A /* LaunchScreen.storyboard */,
 				2070481F2196D3070033096A /* Info.plist */,
+				20ACEF1921983FD1008A5FCB /* DateFormatter+extensions.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -87,6 +94,8 @@
 				20ACEF0B2196D8A8008A5FCB /* CalendarMonthViewController.storyboard */,
 				20ACEF0D2196E019008A5FCB /* UINavigationController+extensions.swift */,
 				20ACEF0F21974D6D008A5FCB /* RoundedView.swift */,
+				20ACEF1521982121008A5FCB /* CalendarCell.swift */,
+				20ACEF1621982121008A5FCB /* CalendarCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +181,7 @@
 				2070481E2196D3070033096A /* LaunchScreen.storyboard in Resources */,
 				2070481B2196D3070033096A /* Assets.xcassets in Resources */,
 				207048192196D3060033096A /* Main.storyboard in Resources */,
+				20ACEF1821982121008A5FCB /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				20ACEF0A2196D87C008A5FCB /* CalendarMonthViewController.swift in Sources */,
+				20ACEF1721982121008A5FCB /* CalendarCell.swift in Sources */,
 				20ACEF1021974D6D008A5FCB /* RoundedView.swift in Sources */,
+				20ACEF1A21983FD1008A5FCB /* DateFormatter+extensions.swift in Sources */,
 				207048162196D3060033096A /* MainViewController.swift in Sources */,
 				207048142196D3060033096A /* AppDelegate.swift in Sources */,
 				20ACEF0E2196E019008A5FCB /* UINavigationController+extensions.swift in Sources */,
