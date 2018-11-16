@@ -30,7 +30,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TK-2K-cRu" userLabel="ContentView">
                         <rect key="frame" x="9" y="4" width="30" height="40"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1M-0T-WGD" customClass="RoundedView" customModule="Calendar" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1M-0T-WGD" customClass="RoundedView" customModule="Calendar" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -44,7 +44,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Jx-dF-3nY" customClass="RoundedView" customModule="Calendar" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Jx-dF-3nY" customClass="RoundedView" customModule="Calendar" customModuleProvider="target">
                                 <rect key="frame" x="12" y="34" width="6" height="6"/>
                                 <color key="backgroundColor" name="eventDotColor"/>
                                 <constraints>

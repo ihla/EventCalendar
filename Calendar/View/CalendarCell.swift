@@ -9,17 +9,45 @@
 import UIKit
 import JTAppleCalendar
 
+struct CalendarCellModel {
+    let day: String
+    let isPresented: Bool
+    let isSelected: Bool
+    let isEvent: Bool
+}
+
+extension CalendarCellModel {
+    init() {
+        self.init(day: "", isPresented: false, isSelected: false, isEvent: false)
+    }
+}
+
 class CalendarCell: JTAppleCell {
     static let identifier = "CalendarCell"
     
-    var day: String = "" {
+    var model: CalendarCellModel = CalendarCellModel() {
         didSet {
-            dayLabel.text = day
+            configure()
         }
+    }
+    
+    override func prepareForReuse() {
+        isHidden = false
+        dayLabel.text = ""
+        selectedView.isHidden = true
+        dotView.isHidden = true
     }
     
     @IBOutlet private weak var dayLabel: UILabel!
     @IBOutlet private weak var selectedView: UIView!
     @IBOutlet private weak var dotView: UIView!
 
+    private func configure() {
+        guard model.isPresented else {
+            isHidden = true
+            return
+        }
+        dayLabel.text = model.day
+        selectedView.isHidden = !model.isSelected
+    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201604A5219EC9A800F88F71 /* CalendarCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201604A4219EC9A800F88F71 /* CalendarCellPresenter.swift */; };
 		207048142196D3060033096A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207048132196D3060033096A /* AppDelegate.swift */; };
 		207048162196D3060033096A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207048152196D3060033096A /* MainViewController.swift */; };
 		207048192196D3060033096A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207048172196D3060033096A /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		201604A4219EC9A800F88F71 /* CalendarCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCellPresenter.swift; sourceTree = "<group>"; };
 		207048102196D3060033096A /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207048132196D3060033096A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207048152196D3060033096A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		201604A3219EC98300F88F71 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				201604A4219EC9A800F88F71 /* CalendarCellPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		207048072196D3060033096A = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 		207048122196D3060033096A /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				201604A3219EC98300F88F71 /* Presenter */,
 				20ACEF082196D5AD008A5FCB /* View */,
 				207048132196D3060033096A /* AppDelegate.swift */,
 				207048152196D3060033096A /* MainViewController.swift */,
@@ -231,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				201604A5219EC9A800F88F71 /* CalendarCellPresenter.swift in Sources */,
 				20ACEF0A2196D87C008A5FCB /* CalendarMonthViewController.swift in Sources */,
 				20ACEF1721982121008A5FCB /* CalendarCell.swift in Sources */,
 				20ACEF1021974D6D008A5FCB /* RoundedView.swift in Sources */,
