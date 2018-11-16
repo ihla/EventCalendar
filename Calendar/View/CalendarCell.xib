@@ -22,7 +22,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdA-YC-AyN">
                         <rect key="frame" x="0.0" y="0.0" width="48" height="1"/>
-                        <color key="backgroundColor" name="eventDotColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.10383668664383562" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="XKL-qN-v2C"/>
                         </constraints>
