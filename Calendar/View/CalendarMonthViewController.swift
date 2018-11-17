@@ -16,14 +16,15 @@ class CalendarMonthViewController: UIViewController {
     @IBOutlet private weak var calendarCollectionView: UICollectionView! {
         didSet {
             calendarCollectionView.register(UINib(nibName: CalendarCell.identifier, bundle: nil), forCellWithReuseIdentifier: CalendarCell.identifier)
-            // inset top -1 to align top line seprator of cel's row with the bottom line separator of day label's row
-            calendarCollectionView.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
         }
     }
 
+    private let backItem = UIBarButtonItem()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.hideShadow = true
+        setNavbarBackTitle(date: Date())
     }
 
 }
@@ -63,5 +64,16 @@ extension CalendarMonthViewController: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         (cell as! CalendarCell).model = CalendarCellModel(from: cellState)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setNavbarBackTitle(date: visibleDates.monthDates.first?.date)
+    }
+    
+    private func setNavbarBackTitle(date: Date?) {
+        guard let date = date else { return }
+        backItem.title = DateFormatter.MMMyyyy.string(from: date)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = nil
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backItem
     }
 }
