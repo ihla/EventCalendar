@@ -13,28 +13,44 @@ import JTAppleCalendar
 
 class CalendarMonthViewController: UIViewController {
     
-    @IBOutlet private weak var calendarCollectionView: UICollectionView! {
+    @IBOutlet private weak var calendarCollectionView: JTAppleCalendarView! {
         didSet {
             calendarCollectionView.register(UINib(nibName: CalendarCell.identifier, bundle: nil), forCellWithReuseIdentifier: CalendarCell.identifier)
         }
     }
 
     private let backItem = UIBarButtonItem()
+    private let today = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.hideShadow = true
-        setNavbarBackTitle(date: Date())
+        setNavbarBackTitle(date: today)
+        scrollToDate(today, animate: false)
+    }
+    
+    @IBAction private func onTodayTapped() {
+        scrollToDate(today, animate: true)
     }
 
+}
+
+
+extension CalendarMonthViewController {
+    private func scrollToDate(_ date: Date, animate: Bool) {
+        calendarCollectionView.scrollToDate(date, triggerScrollToDateDelegate: true, animateScroll: animate, preferredScrollPosition: nil, extraAddedOffset: 0) { [unowned self] in
+            self.calendarCollectionView.selectDates([date])
+            self.setNavbarBackTitle(date: date)
+        }
+    }
 }
 
 extension CalendarMonthViewController: JTAppleCalendarViewDataSource {
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         #warning("TODO: set startDate/endDate relative to current year with N years range")
-        let startDate = DateFormatter.yyyyMMdd.date(from: "2018-01-01")!
-        let endDate = DateFormatter.yyyyMMdd.date(from: "2018-12-31")!
+        let startDate = DateFormatter.yyyyMMdd.date(from: "1900-01-01")!
+        let endDate = DateFormatter.yyyyMMdd.date(from: "2050-12-31")!
         return ConfigurationParameters(startDate: startDate,
                                        endDate: endDate,
                                        numberOfRows: 6,

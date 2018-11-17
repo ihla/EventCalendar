@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Ib Calendar Data Source-->
+        <!--CalendarMonthViewController-->
         <scene sceneID="fa0-AJ-WOS">
             <objects>
-                <viewController storyboardIdentifier="CalendarMonthViewController" id="IOh-vv-SIL" customClass="CalendarMonthViewController" customModule="Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarMonthViewController" id="IOh-vv-SIL" userLabel="CalendarMonthViewController" customClass="CalendarMonthViewController" customModule="Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f17-jD-HAA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqQ-Wf-y8R">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Today" id="rOF-aL-vXn"/>
+                                    <barButtonItem title="Today" id="rOF-aL-vXn">
+                                        <connections>
+                                            <action selector="onTodayTapped" destination="IOh-vv-SIL" id="ZIo-7r-k5S"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DKz-qm-UbY"/>
                                     <barButtonItem title="Upcoming" id="4xM-B0-wYa"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qcD-Vl-tUE"/>
