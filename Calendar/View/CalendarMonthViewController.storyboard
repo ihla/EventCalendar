@@ -114,7 +114,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqQ-Wf-y8R">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
                                 <items>
                                     <barButtonItem title="Today" id="rOF-aL-vXn">
                                         <connections>
@@ -127,8 +127,8 @@
                                     <barButtonItem title="Filter" id="Kco-3I-JE9"/>
                                 </items>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-8t-IBq">
-                                <rect key="frame" x="0.0" y="426.5" width="414" height="435.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-8t-IBq">
+                                <rect key="frame" x="0.0" y="426.5" width="414" height="395.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaF-qL-cYN">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -138,7 +138,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0kI-bh-cwk">
-                                        <rect key="frame" x="0.0" y="1" width="414" height="434.5"/>
+                                        <rect key="frame" x="0.0" y="2" width="414" height="393.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -149,12 +149,12 @@
                             <constraint firstItem="wBa-8t-IBq" firstAttribute="top" secondItem="ESG-E5-M9r" secondAttribute="bottom" id="8DH-TV-GkL"/>
                             <constraint firstItem="bqQ-Wf-y8R" firstAttribute="leading" secondItem="xbp-qW-YXS" secondAttribute="leading" id="HUz-yk-zWP"/>
                             <constraint firstItem="bqQ-Wf-y8R" firstAttribute="bottom" secondItem="xbp-qW-YXS" secondAttribute="bottom" id="OIW-SP-EcQ"/>
+                            <constraint firstItem="bqQ-Wf-y8R" firstAttribute="top" secondItem="wBa-8t-IBq" secondAttribute="bottom" id="OkP-IM-F86"/>
                             <constraint firstItem="bqQ-Wf-y8R" firstAttribute="trailing" secondItem="xbp-qW-YXS" secondAttribute="trailing" id="TEt-eb-oQE"/>
                             <constraint firstItem="wBa-8t-IBq" firstAttribute="leading" secondItem="xbp-qW-YXS" secondAttribute="leading" id="TQe-Uq-Mhx"/>
                             <constraint firstItem="ESG-E5-M9r" firstAttribute="top" secondItem="xbp-qW-YXS" secondAttribute="top" id="moH-LK-XsC"/>
                             <constraint firstItem="wBa-8t-IBq" firstAttribute="trailing" secondItem="xbp-qW-YXS" secondAttribute="trailing" id="rbe-DS-PYC"/>
                             <constraint firstItem="ESG-E5-M9r" firstAttribute="leading" secondItem="xbp-qW-YXS" secondAttribute="leading" id="rtU-ab-0q3"/>
-                            <constraint firstItem="xbp-qW-YXS" firstAttribute="bottom" secondItem="wBa-8t-IBq" secondAttribute="bottom" id="vBl-TP-ku5"/>
                             <constraint firstItem="ESG-E5-M9r" firstAttribute="trailing" secondItem="xbp-qW-YXS" secondAttribute="trailing" id="vNK-v5-2ZG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xbp-qW-YXS"/>
