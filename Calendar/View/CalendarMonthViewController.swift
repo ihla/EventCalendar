@@ -48,8 +48,8 @@ private extension DateSegmentInfo {
 extension CalendarMonthViewController {
     private func scrollToDate(_ date: Date, animate: Bool) {
         calendarCollectionView.scrollToDate(date, triggerScrollToDateDelegate: true, animateScroll: animate, preferredScrollPosition: nil, extraAddedOffset: 0) { [unowned self] in
+            self.calendarCollectionView.deselectAllDates()
             self.calendarCollectionView.selectDates([date])
-            self.setNavbarBackTitle(date: date)
         }
     }
     
@@ -67,12 +67,17 @@ extension CalendarMonthViewController: JTAppleCalendarViewDataSource {
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         #warning("TODO: set startDate/endDate relative to current year with N years range")
-        let startDate = DateFormatter.yyyyMMdd.date(from: "1900-01-01")!
-        let endDate = DateFormatter.yyyyMMdd.date(from: "2050-12-31")!
+        var calendar = Calendar.current
+        calendar.firstWeekday = DaysOfWeek.monday.rawValue // monday!!!
+        let formatter = DateFormatter.yyyyMMdd
+        formatter.locale = calendar.locale
+        formatter.timeZone = calendar.timeZone
+        let startDate = formatter.date(from: "1900-01-01")!
+        let endDate = formatter.date(from: "2050-12-31")!
         return ConfigurationParameters(startDate: startDate,
                                        endDate: endDate,
                                        numberOfRows: calendarRows,
-                                       calendar: Calendar.current,
+                                       calendar: calendar,
                                        generateInDates: .forAllMonths,
                                        generateOutDates: .tillEndOfGrid,
                                        firstDayOfWeek: .monday,
@@ -83,7 +88,8 @@ extension CalendarMonthViewController: JTAppleCalendarViewDataSource {
 
 extension CalendarMonthViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: CalendarCell.identifier, for: indexPath) as! CalendarCell
+        cell.model = CalendarCellModel(from: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
@@ -97,7 +103,8 @@ extension CalendarMonthViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        (cell as! CalendarCell).model = CalendarCellModel(from: cellState)
+        guard let cell = cell as? CalendarCell else { return }
+        cell.model = CalendarCellModel(from: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
