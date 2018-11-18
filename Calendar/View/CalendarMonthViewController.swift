@@ -19,8 +19,11 @@ class CalendarMonthViewController: UIViewController {
         }
     }
 
+    @IBOutlet private weak var calendarViewBottomConstraint: NSLayoutConstraint!
+    
     private let backItem = UIBarButtonItem()
     private let today = Date()
+    private let calendarRows = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,12 @@ class CalendarMonthViewController: UIViewController {
 
 }
 
+private extension DateSegmentInfo {
+    var rows: Int {
+        let result = (Float(indates.count + monthDates.count) / 7).rounded(.up)
+        return Int(result)
+    }
+}
 
 extension CalendarMonthViewController {
     private func scrollToDate(_ date: Date, animate: Bool) {
@@ -43,6 +52,15 @@ extension CalendarMonthViewController {
             self.setNavbarBackTitle(date: date)
         }
     }
+    
+    private func adjustCalendarViewHeight(numberOfRows: Int) {
+        let adjust = numberOfRows < calendarRows
+        calendarViewBottomConstraint.constant = adjust ? -calendarCollectionView.frame.height / CGFloat(calendarRows) : 0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
 }
 
 extension CalendarMonthViewController: JTAppleCalendarViewDataSource {
@@ -53,10 +71,10 @@ extension CalendarMonthViewController: JTAppleCalendarViewDataSource {
         let endDate = DateFormatter.yyyyMMdd.date(from: "2050-12-31")!
         return ConfigurationParameters(startDate: startDate,
                                        endDate: endDate,
-                                       numberOfRows: 6,
+                                       numberOfRows: calendarRows,
                                        calendar: Calendar.current,
                                        generateInDates: .forAllMonths,
-                                       generateOutDates: .off,
+                                       generateOutDates: .tillEndOfGrid,
                                        firstDayOfWeek: .monday,
                                        hasStrictBoundaries: true)
     }
@@ -84,6 +102,7 @@ extension CalendarMonthViewController: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setNavbarBackTitle(date: visibleDates.monthDates.first?.date)
+        adjustCalendarViewHeight(numberOfRows: visibleDates.rows)
     }
     
     private func setNavbarBackTitle(date: Date?) {
