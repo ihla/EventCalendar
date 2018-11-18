@@ -13,12 +13,14 @@ struct CalendarCellModel {
     let day: String
     let isPresented: Bool
     let isSelected: Bool
+    let backgroundColor: UIColor
+    let textColor: UIColor
     let isEvent: Bool
 }
 
 extension CalendarCellModel {
     init() {
-        self.init(day: "", isPresented: false, isSelected: false, isEvent: false)
+        self.init(day: "", isPresented: false, isSelected: false, backgroundColor: UIColor(), textColor: UIColor(), isEvent: false)
     }
 }
 
@@ -34,6 +36,7 @@ class CalendarCell: JTAppleCell {
     override func prepareForReuse() {
         isHidden = false
         dayLabel.text = ""
+        dayLabel.textColor = .black
         selectedView.isHidden = true
         dotView.isHidden = true
     }
@@ -49,5 +52,8 @@ class CalendarCell: JTAppleCell {
         }
         dayLabel.text = model.day
         selectedView.isHidden = !model.isSelected
+        selectedView.backgroundColor = model.backgroundColor
+        dayLabel.textColor = model.textColor
     }
+    
 }
