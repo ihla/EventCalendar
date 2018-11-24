@@ -39,6 +39,7 @@ class CalendarCell: JTAppleCell {
         dayLabel.textColor = .black
         selectedView.isHidden = true
         dotView.isHidden = true
+        dayLabel.font = UIFont.systemFont(ofSize: 17)
     }
     
     @IBOutlet private weak var dayLabel: UILabel!
@@ -54,6 +55,11 @@ class CalendarCell: JTAppleCell {
         selectedView.isHidden = !model.isSelected
         selectedView.backgroundColor = model.backgroundColor
         dayLabel.textColor = model.textColor
+        if model.isSelected {
+            dayLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        } else {
+            dayLabel.font = UIFont.systemFont(ofSize: 17)
+        }
     }
     
 }
