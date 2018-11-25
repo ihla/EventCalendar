@@ -10,15 +10,17 @@ import UIKit
 import JTAppleCalendar
 
 extension CalendarCellModel {
-    init(from state: CellState) {
+    init(from state: CellState, events: [String: [Event]]) {
+        #warning("TODO: Date comparing")
         self.init(day: state.text,
                   isPresented: state.dateBelongsTo == .thisMonth,
                   isSelected: state.isSelected,
                   backgroundColor: CalendarCellModel.backgroundColor(state),
                   textColor: CalendarCellModel.textColor(state),
-                  isEvent: false)
+                  isEvent: events.keys.contains(DateFormatter.yyyyMMdd.string(from: state.date)))
     }
     
+    #warning("TODO: better encapsulate Calendar.current")
     private static func backgroundColor(_ state: CellState) -> UIColor {
         if Calendar.current.isDateInToday(state.date) {
             return .red

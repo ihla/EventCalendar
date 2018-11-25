@@ -51,6 +51,7 @@ class CalendarCell: JTAppleCell {
             isHidden = true
             return
         }
+        dotView.isHidden = !model.isEvent
         dayLabel.text = model.day
         selectedView.isHidden = !model.isSelected
         selectedView.backgroundColor = model.backgroundColor

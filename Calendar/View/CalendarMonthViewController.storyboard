@@ -113,6 +113,26 @@
                                     <constraint firstItem="9Z8-WZ-ePT" firstAttribute="top" secondItem="ESG-E5-M9r" secondAttribute="top" id="uf6-Ej-MUV"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-8t-IBq">
+                                <rect key="frame" x="0.0" y="426.5" width="414" height="395.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaF-qL-cYN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.1034353595890411" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="seC-eF-9hg"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0kI-bh-cwk">
+                                        <rect key="frame" x="0.0" y="2" width="414" height="393.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="IOh-vv-SIL" id="ZBj-Qu-NnV"/>
+                                            <outlet property="delegate" destination="IOh-vv-SIL" id="Awm-vc-0Ui"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqQ-Wf-y8R">
                                 <rect key="frame" x="0.0" y="822" width="414" height="40"/>
                                 <items>
@@ -127,22 +147,6 @@
                                     <barButtonItem title="Filter" id="Kco-3I-JE9"/>
                                 </items>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="wBa-8t-IBq">
-                                <rect key="frame" x="0.0" y="426.5" width="414" height="395.5"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaF-qL-cYN">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.1034353595890411" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="seC-eF-9hg"/>
-                                        </constraints>
-                                    </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0kI-bh-cwk">
-                                        <rect key="frame" x="0.0" y="2" width="414" height="393.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -165,6 +169,7 @@
                     <connections>
                         <outlet property="calendarCollectionView" destination="TxE-kX-8P7" id="Jcz-Le-ZCV"/>
                         <outlet property="calendarViewBottomConstraint" destination="8DH-TV-GkL" id="mGU-av-9ne"/>
+                        <outlet property="tableView" destination="0kI-bh-cwk" id="jtA-OD-sfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="reL-wF-yew" userLabel="First Responder" sceneMemberID="firstResponder"/>

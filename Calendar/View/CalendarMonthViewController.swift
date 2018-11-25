@@ -9,8 +9,7 @@
 import UIKit
 import JTAppleCalendar
 
-
-
+#warning("TODO: try to slim down the controller")
 class CalendarMonthViewController: UIViewController {
     
     @IBOutlet private weak var calendarCollectionView: JTAppleCalendarView! {
@@ -21,15 +20,57 @@ class CalendarMonthViewController: UIViewController {
 
     @IBOutlet private weak var calendarViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            tableView.register(UINib(nibName: EventCell.identifier, bundle: nil), forCellReuseIdentifier: EventCell.identifier)
+            tableView.rowHeight = 50
+            tableView.estimatedRowHeight = 50
+        }
+    }
+    
     private let backItem = UIBarButtonItem()
     private let today = Date()
     private let calendarRows = 6
     
+    private var monthEvents: [String: [Event]] = [:] {
+        didSet {
+            guard let _ = calendarCollectionView.selectedDates.first else { return }
+            tableView.reloadData()
+            calendarCollectionView.reloadData()
+        }
+    }
+    private let interactor = CalendarEventInteractor()
+    
+    private lazy var currentCalendar: Calendar = {
+        var calendar = Calendar.current
+        calendar.firstWeekday = DaysOfWeek.monday.rawValue // monday!!!
+        return calendar
+    }()
+    private lazy var formatter: DateFormatter = {
+        let formatter = DateFormatter.yyyyMMdd
+        formatter.locale = currentCalendar.locale
+        formatter.timeZone = currentCalendar.timeZone
+        return formatter
+    }()
+
+    #warning("TODO: set startDate/endDate relative to current year with N years range")
+    private lazy var calendarStartDate: Date = { formatter.date(from: "1970-01-01")! }()
+    private lazy var calendarEndDate: Date = { formatter.date(from: "2038-12-31")! }()
+    
+    private var lastScrolledToDate: Date?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.hideShadow = true
         setNavbarBackTitle(date: today)
         scrollToDate(today, animate: false)
+        getEvents()
+    }
+    
+    private func getEvents() {
+        interactor.getEvents(start: calendarStartDate, end: calendarEndDate, formatter: formatter) { [weak self] events in
+            self?.monthEvents = events
+        }
     }
     
     @IBAction private func onTodayTapped() {
@@ -60,24 +101,28 @@ extension CalendarMonthViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    private func selectDate(in visibleDates: DateSegmentInfo) {
+        guard let firstVisibleDate = visibleDates.monthDates.first?.date, let lastVisibleDate = visibleDates.monthDates.last?.date else { return }
+        
+        if today >= firstVisibleDate && today <= lastVisibleDate {
+            calendarCollectionView.selectDates([today])
+        } else {
+            calendarCollectionView.selectDates([firstVisibleDate])
+        }
+    }
+
 
 }
 
 extension CalendarMonthViewController: JTAppleCalendarViewDataSource {
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        #warning("TODO: set startDate/endDate relative to current year with N years range")
-        var calendar = Calendar.current
-        calendar.firstWeekday = DaysOfWeek.monday.rawValue // monday!!!
-        let formatter = DateFormatter.yyyyMMdd
-        formatter.locale = calendar.locale
-        formatter.timeZone = calendar.timeZone
-        let startDate = formatter.date(from: "1900-01-01")!
-        let endDate = formatter.date(from: "2050-12-31")!
-        return ConfigurationParameters(startDate: startDate,
-                                       endDate: endDate,
+        #warning("TODO: match calendar local settings")
+        return ConfigurationParameters(startDate: calendarStartDate,
+                                       endDate: calendarEndDate,
                                        numberOfRows: calendarRows,
-                                       calendar: calendar,
+                                       calendar: currentCalendar,
                                        generateInDates: .forAllMonths,
                                        generateOutDates: .tillEndOfGrid,
                                        firstDayOfWeek: .monday,
@@ -89,27 +134,33 @@ extension CalendarMonthViewController: JTAppleCalendarViewDataSource {
 extension CalendarMonthViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: CalendarCell.identifier, for: indexPath) as! CalendarCell
-        cell.model = CalendarCellModel(from: cellState)
+        cell.model = CalendarCellModel(from: cellState, events: monthEvents)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: CalendarCell.identifier, for: indexPath) as! CalendarCell
-        cell.model = CalendarCellModel(from: cellState)
+        cell.model = CalendarCellModel(from: cellState, events: monthEvents)
         return cell
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        (cell as! CalendarCell).model = CalendarCellModel(from: cellState)
+        (cell as! CalendarCell).model = CalendarCellModel(from: cellState, events: monthEvents)
+        tableView.reloadData()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
-        cell.model = CalendarCellModel(from: cellState)
+        cell.model = CalendarCellModel(from: cellState, events: monthEvents)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setNavbarBackTitle(date: visibleDates.monthDates.first?.date)
         adjustCalendarViewHeight(numberOfRows: visibleDates.rows)
+        let currentScroledToDate = visibleDates.monthDates.first?.date
+        if lastScrolledToDate != currentScroledToDate {
+            lastScrolledToDate = currentScroledToDate
+            selectDate(in: visibleDates)
+        }
     }
     
     private func setNavbarBackTitle(date: Date?) {
@@ -117,5 +168,41 @@ extension CalendarMonthViewController: JTAppleCalendarViewDelegate {
         backItem.title = DateFormatter.MMMyyyy.string(from: date)
         navigationController?.navigationBar.topItem?.backBarButtonItem = nil
         navigationController?.navigationBar.topItem?.backBarButtonItem = backItem
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension CalendarMonthViewController: UITableViewDataSource {
+    private var selectedDateEvents: [Event] {
+        guard let date = calendarCollectionView.selectedDates.first else {
+            return []
+        }
+        return monthEvents[DateFormatter.yyyyMMdd.string(from: date)] ?? []
+
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let c = selectedDateEvents.count
+        return c
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
+        cell.model = EventCellModel(with: selectedDateEvents[indexPath.row])
+        return cell
+    }
+}
+
+extension CalendarMonthViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        #warning("TODO: correct cell constraints to allow automatic cell sizing")
+        return 50
+        
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }

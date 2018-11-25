@@ -13,6 +13,10 @@
 		207048192196D3060033096A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207048172196D3060033096A /* Main.storyboard */; };
 		2070481B2196D3070033096A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2070481A2196D3070033096A /* Assets.xcassets */; };
 		2070481E2196D3070033096A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2070481C2196D3070033096A /* LaunchScreen.storyboard */; };
+		2082B68021A99F34003A0E7D /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2082B67D21A99F33003A0E7D /* EventCell.xib */; };
+		2082B68121A99F34003A0E7D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082B67E21A99F33003A0E7D /* EventCell.swift */; };
+		2082B68721A9A466003A0E7D /* CalendarEventInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082B68621A9A466003A0E7D /* CalendarEventInteractor.swift */; };
+		2082B68921A9A7AD003A0E7D /* EventCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082B68821A9A7AD003A0E7D /* EventCellPresenter.swift */; };
 		20ACEF0A2196D87C008A5FCB /* CalendarMonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACEF092196D87C008A5FCB /* CalendarMonthViewController.swift */; };
 		20ACEF0C2196D8A8008A5FCB /* CalendarMonthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20ACEF0B2196D8A8008A5FCB /* CalendarMonthViewController.storyboard */; };
 		20ACEF0E2196E019008A5FCB /* UINavigationController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ACEF0D2196E019008A5FCB /* UINavigationController+extensions.swift */; };
@@ -32,6 +36,10 @@
 		2070481A2196D3070033096A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2070481D2196D3070033096A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2070481F2196D3070033096A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2082B67D21A99F33003A0E7D /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		2082B67E21A99F33003A0E7D /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		2082B68621A9A466003A0E7D /* CalendarEventInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventInteractor.swift; sourceTree = "<group>"; };
+		2082B68821A9A7AD003A0E7D /* EventCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellPresenter.swift; sourceTree = "<group>"; };
 		20ACEF092196D87C008A5FCB /* CalendarMonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthViewController.swift; sourceTree = "<group>"; };
 		20ACEF0B2196D8A8008A5FCB /* CalendarMonthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarMonthViewController.storyboard; sourceTree = "<group>"; };
 		20ACEF0D2196E019008A5FCB /* UINavigationController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extensions.swift"; sourceTree = "<group>"; };
@@ -60,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				201604A4219EC9A800F88F71 /* CalendarCellPresenter.swift */,
+				2082B68821A9A7AD003A0E7D /* EventCellPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -85,6 +94,7 @@
 		207048122196D3060033096A /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				2082B68521A9A428003A0E7D /* Interactor */,
 				201604A3219EC98300F88F71 /* Presenter */,
 				20ACEF082196D5AD008A5FCB /* View */,
 				207048132196D3060033096A /* AppDelegate.swift */,
@@ -98,6 +108,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		2082B68521A9A428003A0E7D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2082B68621A9A466003A0E7D /* CalendarEventInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		20ACEF082196D5AD008A5FCB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +125,8 @@
 				20ACEF0F21974D6D008A5FCB /* RoundedView.swift */,
 				20ACEF1521982121008A5FCB /* CalendarCell.swift */,
 				20ACEF1621982121008A5FCB /* CalendarCell.xib */,
+				2082B67E21A99F33003A0E7D /* EventCell.swift */,
+				2082B67D21A99F33003A0E7D /* EventCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +212,7 @@
 				2070481E2196D3070033096A /* LaunchScreen.storyboard in Resources */,
 				2070481B2196D3070033096A /* Assets.xcassets in Resources */,
 				207048192196D3060033096A /* Main.storyboard in Resources */,
+				2082B68021A99F34003A0E7D /* EventCell.xib in Resources */,
 				20ACEF1821982121008A5FCB /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2082B68921A9A7AD003A0E7D /* EventCellPresenter.swift in Sources */,
 				201604A5219EC9A800F88F71 /* CalendarCellPresenter.swift in Sources */,
 				20ACEF0A2196D87C008A5FCB /* CalendarMonthViewController.swift in Sources */,
 				20ACEF1721982121008A5FCB /* CalendarCell.swift in Sources */,
@@ -249,7 +271,9 @@
 				20ACEF1A21983FD1008A5FCB /* DateFormatter+extensions.swift in Sources */,
 				207048162196D3060033096A /* MainViewController.swift in Sources */,
 				207048142196D3060033096A /* AppDelegate.swift in Sources */,
+				2082B68721A9A466003A0E7D /* CalendarEventInteractor.swift in Sources */,
 				20ACEF0E2196E019008A5FCB /* UINavigationController+extensions.swift in Sources */,
+				2082B68121A99F34003A0E7D /* EventCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
